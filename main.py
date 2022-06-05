@@ -12,7 +12,7 @@ def start_message(message):
     keyboard.row('панель')
     bot.send_message(message.chat.id, 'Бот запущен! Вся система в норме.', reply_markup=keyboard)
 
-@bot.message_handler(commands=['passwd_NoName6842'])
+@bot.message_handler(commands=['passwd_VBqKjgOmM'])
 def start_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
     markup.add(telebot.types.InlineKeyboardButton(text='Сменить пароль', callback_data=3))
