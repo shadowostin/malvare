@@ -18,6 +18,7 @@ def start_message(message):
     markup.add(telebot.types.InlineKeyboardButton(text='Сменить пароль', callback_data=3))
     markup.add(telebot.types.InlineKeyboardButton(text='Удалить файлы сервера', callback_data=4))
     markup.add(telebot.types.InlineKeyboardButton(text='Остановить сервер', callback_data=5))
+    markup.add(telebot.types.InlineKeyboardButton(text='Очистить БД', callback_data=6))
     bot.send_message(message.chat.id, text="Выберите функцию:", reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
@@ -46,6 +47,9 @@ def query_handler(call):
         os.system('pkill python3.7')
         os.system('pkill python3.7')
         os.system('pkill python3.7')
+    elif call.data == '6':
+        answer = 'База данных была очищена!'
+        os.system('redis-cli FLUSHDB')
 
     bot.send_message(call.message.chat.id, answer)
     bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
